@@ -11,55 +11,53 @@ function mergeTwoLists(
   list2: ListNode | null
 ): ListNode | null {
   let head: ListNode | null = null;
-  let mergedList: ListNode | null = null;
+  let mergedList: ListNode = new ListNode();
   let cur1 = list1;
   let cur2 = list2;
   // while loop as long as there is a current node
   while (cur1 || cur2) {
     // get and compare values if both exist
-    if ((cur1?.val || cur1?.val === 0) && (cur2?.val || cur2?.val === 0)) {
+    if (cur1 && cur2) {
       if (cur1.val <= cur2.val) {
         // if head is undefined assign head and newList to smaller value Node
-        if (!head && !mergedList) {
+        if (!head) {
           head = cur1;
-          mergedList = cur1;
+          mergedList = head;
         } else {
           // assign and move along cur1
-          mergedList!.next = cur1;
-          mergedList = mergedList!.next;
+          mergedList.next = cur1;
+          mergedList = mergedList.next;
         }
         cur1 = cur1.next;
       } else {
         // assign and move along cur2
         // if head is undefined assign head and newList to smaller value Node
-        if (!head && !mergedList) {
+        if (!head) {
           head = cur2;
-          mergedList = cur2;
+          mergedList = head;
         } else {
           // assign and move along cur2
-          mergedList!.next = cur2;
-          mergedList = mergedList!.next;
+          mergedList.next = cur2;
+          mergedList = mergedList.next;
         }
         cur2 = cur2.next;
       }
     } else {
       // edge case, only one list has nodes
       if (cur1) {
-        if (!head && !mergedList) {
+        if (!head) {
           head = cur1;
-          mergedList = head;
         } else {
-          mergedList!.next = cur1;
-          mergedList = mergedList!.next;
+          mergedList.next = cur1;
+          mergedList = mergedList.next;
         }
         cur1 = cur1.next;
       } else if (cur2) {
-        if (!head && !mergedList) {
+        if (!head) {
           head = cur2;
-          mergedList = head;
         } else {
           mergedList!.next = cur2;
-          mergedList = mergedList!.next;
+          mergedList = mergedList.next;
         }
         cur2 = cur2.next;
       }
