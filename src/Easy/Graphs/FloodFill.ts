@@ -11,12 +11,12 @@ const floodFill = (
   color: number
 ): number[][] | undefined => {
   // new color is same as source, nothing needs to be done
-  // avoids stack overflow
+  // avoids stack overflow without needing a visitedArray
   if (image[sr][sc] === color) {
     return image;
   }
   // recursion helper function with same args
-  const recurse = (
+  const dfs = (
     row: number,
     col: number,
     oldColor: number,
@@ -35,13 +35,13 @@ const floodFill = (
     // pixel is same color, fill it with new color
     image[row][col] = newColor;
     console.log({ row, col });
-    // call recurse on adjacent pixels
-    recurse(row - 1, col, oldColor, newColor);
-    recurse(row + 1, col, oldColor, newColor);
-    recurse(row, col - 1, oldColor, newColor);
-    recurse(row, col + 1, oldColor, newColor);
+    // call dfs on adjacent pixels
+    dfs(row - 1, col, oldColor, newColor);
+    dfs(row + 1, col, oldColor, newColor);
+    dfs(row, col - 1, oldColor, newColor);
+    dfs(row, col + 1, oldColor, newColor);
   };
-  recurse(sr, sc, image[sr][sc], color);
+  dfs(sr, sc, image[sr][sc], color);
   return image;
 };
 
