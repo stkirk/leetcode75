@@ -10,6 +10,8 @@ const floodFill = (
   sc: number,
   color: number
 ): number[][] | undefined => {
+  // new color is same as source, nothing needs to be done
+  // avoids stack overflow
   if (image[sr][sc] === color) {
     return image;
   }
@@ -32,6 +34,7 @@ const floodFill = (
     }
     // pixel is same color, fill it with new color
     image[row][col] = newColor;
+    console.log({ row, col });
     // call recurse on adjacent pixels
     recurse(row - 1, col, oldColor, newColor);
     recurse(row + 1, col, oldColor, newColor);
