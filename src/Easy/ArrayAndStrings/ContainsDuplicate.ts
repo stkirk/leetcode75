@@ -5,17 +5,14 @@
 function containsDuplicate(nums: number[]): boolean {
   // create hashmap of integer: occurences from nums
   const numCount: { [key: number]: number } = {};
-  nums.forEach((num) => {
-    if (!numCount[num]) {
-      numCount[num] = 1;
-    } else {
-      // num already exists in hashmap, increment count
-      numCount[num] += 1;
-    }
-  });
-  for (let num in numCount) {
-    if (numCount[num] > 1) {
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    // if numCount[num] exists return false because it is a duplicate
+    if (numCount[num]) {
       return true;
+    } else {
+      // else add it to the hashmap
+      numCount[num] = 1;
     }
   }
   return false;
