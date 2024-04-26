@@ -4,6 +4,10 @@
 // majority element is more than half of n
 
 const findMajorityElement = (nums: number[]): number | null => {
+  // edge case: only 1 element in array, return it
+  if (nums.length === 1) {
+    return nums[0];
+  }
   // initialize empty hashmap with number: count for each num in nums
   const numCounts: { [key: number]: number } = {};
   const majorityThreshold = nums.length / 2;
@@ -30,3 +34,4 @@ const findMajorityElement = (nums: number[]): number | null => {
 
 console.log(findMajorityElement([3, 2, 3])); // 3
 console.log(findMajorityElement([2, 2, 1, 1, 1, 2, 2])); // 2
+console.log(findMajorityElement([1])); // 1
