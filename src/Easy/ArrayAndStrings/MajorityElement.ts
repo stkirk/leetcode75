@@ -3,7 +3,7 @@
 // Majority element: element that appears > n / 2 times
 // majority element is more than half of n
 
-const findMajorityElement = (nums: number[]): number | null => {
+export const findMajorityElement = (nums: number[]): number | null => {
   // edge case: only 1 element in array, return it
   if (nums.length === 1) {
     return nums[0];
