@@ -37,6 +37,5 @@ export const removeElement = (nums: number[], val: number): number => {
       left++;
     }
   }
-
   return left;
 };
