@@ -1,6 +1,6 @@
 const x = 2;
 let y = 4;
-function update(arg: number) {
+export function update(arg: number) {
   return Math.random() + y * arg;
 }
 y = 2;
